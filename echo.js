@@ -40,6 +40,42 @@ exports.handler = (event, context, callback) => {
     callback(null, 'Success!');
 };
 
+/* on editing */
 var getResponseMessage = function(message) {
+    if(isGoHome(message)){
+        var dt = new Date();
+        dt.setTime(dt.getTime() + 32400000); // 1000 * 60 * 60 * 9(hour) <- is it need?
+        var workFinishTime = dt.setHours(17);
+        
+        workFinishTime.setMinutes(45);
+        dt = normalizeMinuete(dt);
+        var diff = (dt.getTime() - workFinishTime.getTime())/1000*60;
+        return "Your overtime is ...";
+    }
     return message;
+};
+
+/* Does user want to go home */
+/* string matching is not good work */
+var isGoHome = function(message) {
+    /*var goHomeWord = ['帰','きたく','かえる','かえり'];
+    for each (var val in goHomeWord){
+        if ( message.indexOf(val) != -1) {
+            return true;
+        }
+    }*/
+    return true;
+};
+/*　normalize 15minute or 30minute */
+/* also not good work */
+var normalizeMinuete = function(dt){
+    if(0<dt.getMinutes() || dt.getMinutes()<30 ){
+        dt.setMinutes(15);
+        return dt;
+    }else
+    {
+        dt.setMinutes(45);
+        dt.setHours(19)
+        return dt; 
+    }
 };
