@@ -12,7 +12,7 @@ exports.handler = (event, context, callback) => {
                 }
             ]
         });
-        var ChannelAccessToken = 'RYLztMK6usQVF0pstf1Gqh6gECGHyZNlhaGBGBB7ruRU+BAD6pHzkJ+eT8nYkBe/Jy9msAXH2eBWN1FnDGQtuIhlcqNQ6Q55pSCsXnQ75TC9X55Y97WO0i14jGXqCoZYeSYiDT+s6poyznksZIoBGwdB04t89/1O/w1cDnyilFU=';
+        var ChannelAccessToken = 'TOKEN';
         var options = {
             hostname: 'api.line.me',
             path: '/v2/bot/message/reply',
